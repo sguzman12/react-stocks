@@ -35,7 +35,7 @@ module.exports = {
     "no-unused-vars": "warn",
     "import/prefer-default-export": "warn",
     "arrow-body-style": "warn",
-    "prefer-arrow-callback": "off",
+
     "no-restricted-imports": [
       "warn",
       {
