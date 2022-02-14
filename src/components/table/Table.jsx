@@ -1,9 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetAllStocksQuery } from "../../api/api";
+import { stocksApi, useGetAllStocksQuery } from "../../api/api";
 
-const { data, error, isLoading } = useGetAllStocksQuery;
+// const { data, error, isLoading } = useGetAllStocksQuery();
+// const { data } = stocksApi.endpoints.getAllStocks;
+const { data } = useGetAllStocksQuery();
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -11,7 +13,7 @@ const columns = [
   { field: "value", headerName: "Price", width: 70 },
 ];
 
-const rows = data;
+// const rows = data.map;
 
 // const columns = [
 //   { field: "id", headerName: "ID", width: 70 },
@@ -51,7 +53,7 @@ function Table() {
     <Box sx={{ display: "flex" }}>
       <DataGrid
         autoHeight
-        rows={rows}
+        rows={data}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
