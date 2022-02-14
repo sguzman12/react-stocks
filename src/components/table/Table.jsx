@@ -37,8 +37,9 @@ const rows = [
 
 function Table() {
   return (
-    <Box sx={{ height: 400 }}>
+    <Box sx={{ display: "flex" }}>
       <DataGrid
+        autoHeight
         rows={rows}
         columns={columns}
         pageSize={5}
