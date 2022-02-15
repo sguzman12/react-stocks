@@ -4,11 +4,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { stocksApi, useGetAllStocksQuery } from "../../api/api";
 
 // const { data, error, isLoading } = useGetAllStocksQuery();
-const result = stocksApi.endpoints.getAllStocks.select();
-const { data, status, error } = result;
+// const result = stocksApi.endpoints.getAllStocks.select();
+// const { data, status, error } = result;
 // const { data } = useGetAllStocksQuery();
-useEffect(() => {}, [data]);
-console.log("Data >>>>", data);
+// useEffect(() => {}, [data]);
+// console.log("Data >>>>", data);
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "companyName", headerName: "Company Name", width: 130 },
@@ -50,19 +50,23 @@ const columns = [
 //   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 // ];
 
-function Table() {
+export default function Table() {
+  const { data, error, isLoading } = useGetAllStocksQuery();
+
   return (
     <Box sx={{ display: "flex" }}>
-      <DataGrid
-        autoHeight
-        rows={data}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
+      {data ? (
+        <DataGrid
+          autoHeight
+          rows={data}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      ) : (
+        <p>Nothing found</p>
+      )}
     </Box>
   );
 }
-
-export default Table;
