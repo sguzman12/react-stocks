@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { stocksApi, useGetAllStocksQuery } from "../../api/api";
 
 // const { data, error, isLoading } = useGetAllStocksQuery();
-// const { data } = stocksApi.endpoints.getAllStocks;
-const { data } = useGetAllStocksQuery();
-
+const result = stocksApi.endpoints.getAllStocks.select();
+const { data, status, error } = result;
+// const { data } = useGetAllStocksQuery();
+useEffect(() => {}, [data]);
+console.log("Data >>>>", data);
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "companyName", headerName: "Company Name", width: 130 },
